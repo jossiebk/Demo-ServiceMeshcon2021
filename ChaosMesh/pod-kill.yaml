@@ -8,8 +8,24 @@ spec:
   mode: one
   selector:
     namespaces:
-      - servicemeshcon-demo
+      - chaos-testing
     labelSelectors:
-      'app.kubernetes.io/component': 'tikv'
+      'app': 'apache'
   scheduler:
-    cron: '@every 30s'
+    cron: '@every 3s'
+---
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: pod-failure-example
+  namespace: chaos-testing
+spec:
+  action: pod-failure
+  mode: one
+  value: ''
+  duration: '30s'
+  selector:
+    labelSelectors:
+      'app': 'client'
+  scheduler:
+    cron: '@every 5s'
