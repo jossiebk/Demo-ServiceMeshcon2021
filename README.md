@@ -60,7 +60,10 @@ kubectl delete -f faulty_traffic.yaml
 ```
 
 ## Access the dashboard Dashboard
+```
 kubectl port-forward -n chaos-testing svc/chaos-dashboard 2333:2333
-
+```
 
 # References
+- https://linkerd.io/2.10/tasks/fault-injection/
+- https://chaos-mesh.org/
